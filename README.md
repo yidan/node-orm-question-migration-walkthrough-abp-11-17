@@ -21,10 +21,14 @@ To pass this lab, let's first stub out a `static` function in the `Question` cla
 
 **File: [models/Question.js](models/Question.js)**
 ```js
+const db = require("../config/db")
+
 class Question{
   static CreateTable() {
   }
 }
+
+module.exports = Question;
 ```
 
 Running the tests in this current state produces:
@@ -54,6 +58,8 @@ Focusing only on the first error, we know that ultimately `CreateTable` should b
 
 **File: [models/Question.js](models/Question.js)**
 ```js
+const db = require("../config/db")
+
 class Question{
   static CreateTable() {
     return new Promise(function(resolve){
@@ -61,6 +67,8 @@ class Question{
     })
   }
 }
+
+module.exports = Question;
 ```
 
 Running the tests again in the state above shows:
@@ -96,6 +104,8 @@ We also have to move the resolution of our promise into the callback of `db.run(
 
 **File: [models/Question.js](models/Question.js)**
 ```js
+const db = require("../config/db")
+
 class Question{
   static CreateTable() {
     return new Promise(function(resolve){
@@ -106,6 +116,8 @@ class Question{
     })
   }
 }
+
+module.exports = Question;
 ```
 
 ```
@@ -133,6 +145,8 @@ With only one test failing, the error output gives us a clear hint of what to do
 ** Solution **
 **File: [models/Question.js](models/Question.js)**
 ```js
+const db = require("../config/db")
+
 class Question{
   static CreateTable() {
     return new Promise(function(resolve){
@@ -147,6 +161,8 @@ class Question{
     })
   }
 }
+
+module.exports = Question;
 ```
 
 A final run of the test suite gives us all green.
